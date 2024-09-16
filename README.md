@@ -81,6 +81,20 @@ This project aims for me to learn along the way.<br/>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## Preview
+
+<div style="display:flex; justify-content: space-around">
+  <a>
+    <img src="images/RegisterPage.png" alt="Register" width="80" height="80">
+  </a>
+  <a>
+    <img src="images/LoginPage.png" alt="Login" width="80" height="80">
+  </a>
+  <a>
+    <img src="images/ChatPage.png" alt="Chat" width="80" height="80">
+  </a>
+</div>
+
 <!-- GETTING STARTED -->
 
 ## Getting Started
