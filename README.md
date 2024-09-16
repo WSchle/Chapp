@@ -79,8 +79,6 @@ This project aims for me to learn along the way.<br/>
 -   [![SocketIO][socketio.js]][socketio-url]
 -   [![Express][express.js]][express-url]
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ## Preview
 
 <div style="display:flex; justify-content: space-around">
@@ -94,6 +92,8 @@ This project aims for me to learn along the way.<br/>
     <img src="images/ChatPage.png" alt="Chat" width="256" height="256">
   </a>
 </div>
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 
