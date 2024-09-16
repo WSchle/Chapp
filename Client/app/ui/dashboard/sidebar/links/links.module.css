@@ -1,0 +1,24 @@
+.container {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 40px;
+    transition: background-color 0.3s ease-out, margin-left 0.3s ease-out;
+}
+
+.container:hover:not(.active) {
+    background-color: var(--bgSofter);
+
+    box-shadow: 2px 2px 2px var(--textSofter);
+}
+
+.active {
+    background-color: var(--bgSoftest);
+    color: var(--textSoft);
+    box-shadow: 2px 2px 2px var(--textSoft);
+}
+
+.disabled {
+    pointer-events: none;
+}

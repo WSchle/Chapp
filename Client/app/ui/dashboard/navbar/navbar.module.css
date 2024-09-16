@@ -1,0 +1,44 @@
+.container {
+    padding: 20px 30px 20px 30px;
+    border-radius: 40px;
+    background-color: var(--bgSoft);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 0px 7px #c6d8fd;
+}
+
+.title {
+    color: var(--text);
+    font-family: 'PoppinsBold';
+    text-transform: capitalize;
+    margin-left: 75px;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.notifications,
+.settings,
+.logout {
+    color: var(--text);
+    padding: 10px;
+    border-radius: 40px;
+    border: none;
+    background-color: var(--bgSoft);
+    transition: all 0.2s ease-out;
+}
+
+.notifications:hover,
+.settings:hover {
+    background-color: var(--bgDark);
+    color: var(--bgSofter);
+}
+
+.logout:hover {
+    background-color: darkred;
+    color: var(--bgSofter);
+}

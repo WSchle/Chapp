@@ -1,0 +1,175 @@
+.container {
+    display: flex;
+    height: 100%;
+    gap: 10px;
+}
+
+.chatlistcontainer {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    background-color: var(--bgSofter);
+    border-radius: 40px;
+    padding: 20px;
+    box-shadow: 0px 0px 7px #c6d8fd;
+}
+
+.chatcontainer {
+    flex: 2;
+    flex-direction: column;
+    display: flex;
+    background-color: var(--bgSofter);
+    border-radius: 40px;
+    padding: 20px;
+    box-shadow: 0px 0px 7px #c6d8fd;
+}
+
+.chatcontainer:has(.loading) {
+    align-items: center;
+}
+
+.chatlist {
+    list-style: none;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.chatlist li {
+    padding: 5px;
+    display: flex;
+}
+
+.messages {
+    flex: 10;
+    border: 1px var(--textSofter) solid;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: 2px 0px 2px var(--textSoft);
+    background-color: var(--bgSoft);
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputbar {
+    flex: 1;
+    width: 100%;
+    border: 1px var(--textSofter) solid;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 2px 2px 2px var(--textSoft);
+    background-color: var(--bgSoft);
+}
+
+.form {
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.messagefield {
+    width: 70%;
+    padding: 10px;
+    padding-left: 20px;
+    border: none;
+    color: var(--text);
+    background-color: var(--bgSoftest);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background-color: var(--bgSoftest);
+    transition: all 0.2s ease-out;
+    font-family: 'PoppinsBold';
+    box-shadow: 2px 2px 2px var(--textSoft);
+}
+
+.error::placeholder {
+    color: darkred;
+    opacity: 0.7;
+}
+
+.submit {
+    color: var(--text);
+    padding: 10px;
+    padding-right: 15px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border: none;
+    border-left: 1px var(--textSofter) solid;
+    background-color: var(--bgSoftest);
+    transition: all 0.2s ease-out;
+    font-family: 'PoppinsBold';
+    box-shadow: 2px 2px 2px var(--textSoft);
+}
+
+.submit:focus,
+.messagefield:focus {
+    outline: none;
+}
+
+.submit:disabled {
+    background-color: #d3d3d3;
+    box-shadow: 2px 2px 2px rgb(157, 139, 185);
+    color: var(--textSoft);
+}
+
+.submit:not(:disabled):hover {
+    background-color: var(--bg);
+    color: var(--bgSoftest);
+    box-shadow: 2px 2px 2px var(--bgSoftest);
+}
+
+.chatmessages {
+    list-style: none;
+}
+
+/* width */
+.messages::-webkit-scrollbar {
+    display: none;
+    width: 10px;
+}
+
+/* Track */
+.messages::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+.messages::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+.messages::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+@keyframes showslow {
+    0% {
+        opacity: 0;
+        max-height: 0;
+    }
+    100% {
+        opacity: 1;
+        max-height: 1600px;
+    }
+}
+
+.newmessage {
+    opacity: 0;
+    max-height: 0;
+    animation-name: showslow;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
