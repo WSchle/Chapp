@@ -1,0 +1,46 @@
+.container {
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 20px;
+    background-color: var(--bgSofter);
+    box-shadow: 0px 0px 7px #c6d8fd;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    justify-content: middle;
+    gap: 15px;
+}
+
+.userImage {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.openchat,
+.unfriend {
+    color: var(--text);
+    padding: 10px;
+    border-radius: 40px;
+    border: none;
+    background-color: var(--bgSoft);
+    transition: all 0.2s ease-out;
+}
+
+.openchat:hover {
+    background-color: var(--bgDark);
+    color: var(--bgSofter);
+}
+
+.unfriend:hover {
+    background-color: darkred;
+    color: var(--bgSofter);
+}

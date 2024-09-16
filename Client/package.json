@@ -1,0 +1,27 @@
+{
+    "name": "chapp-client",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@next/eslint-plugin-next": "14.0.1",
+        "@nextui-org/tooltip": "^2.0.39",
+        "cookie-cutter": "^0.2.0",
+        "moment": "^2.30.1",
+        "next": "14.0.1",
+        "react": "18",
+        "react-dom": "18",
+        "react-icons": "^4.11.0",
+        "socket.io": "^4.7.5",
+        "socket.io-client": "^4.7.5"
+    },
+    "devDependencies": {
+        "eslint": "8",
+        "eslint-config-next": "14.0.1"
+    }
+}

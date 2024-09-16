@@ -1,0 +1,49 @@
+.container {
+    position: sticky;
+    height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    padding: 10px 20px 10px 20px;
+    border: 1px var(--text) solid;
+    border-radius: 50px;
+    box-shadow: 2px 2px 2px var(--textSoft);
+    transition: background-color 0.3s, box-shadow 0.3s, color 0.3s;
+}
+
+.user:hover {
+    color: var(--textSoft);
+    background-color: var(--bgSofter);
+    box-shadow: 4px 4px 4px var(--textSofter);
+}
+
+.userImage {
+    border: 1px var(--text) solid;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.username {
+    font-family: 'PoppinsBold';
+}
+
+.pages {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pages li {
+    padding: 5px;
+}
