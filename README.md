@@ -79,6 +79,20 @@ This project aims for me to learn along the way.<br/>
 -   [![SocketIO][socketio.js]][socketio-url]
 -   [![Express][express.js]][express-url]
 
+## Preview
+
+<div style="display:flex; justify-content: space-around">
+  <a>
+    <img src="images/RegisterPage.png" alt="Register" width="256" height="256">
+  </a>
+  <a>
+    <img src="images/LoginPage.png" alt="Login" width="256" height="256">
+  </a>
+  <a>
+    <img src="images/ChatPage.png" alt="Chat" width="256" height="256">
+  </a>
+</div>
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
