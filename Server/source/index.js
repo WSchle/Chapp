@@ -5,7 +5,7 @@ const cors = require('cors');
 const bodyparser = require('body-parser');
 const socketIO = require('socket.io')(http, {
     cors: {
-        origin: 'localhost:3000',
+        origin: 'http://localhost:3000',
     },
 });
 require('dotenv').config();
