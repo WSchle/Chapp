@@ -22,6 +22,29 @@ const userInterface = {
             });
         });
     },
+    updateToken: (username, newToken) => {
+        return new Promise((resolve, reject) => {
+            database.then(async (dataConn) => {
+                const result = await dataConn.query(
+                    `UPDATE users SET token='${newToken}' WHERE username='${username}'`
+                );
+                dataConn.end();
+                resolve(result.affectedRows >= 1);
+            });
+        });
+    },
+    getToken: (username) => {
+        return new Promise((resolve, reject) => {
+            database.then((dataConn) => {
+                dataConn
+                    .query(`SELECT token FROM users WHERE username='${username}'`)
+                    .then((rows) => {
+                        dataConn.end();
+                        resolve(rows[0]?.token);
+                    });
+            });
+        });
+    },
 };
 
 module.exports = userInterface;
