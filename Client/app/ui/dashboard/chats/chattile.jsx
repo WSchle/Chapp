@@ -32,8 +32,7 @@ const ChatTile = ({ item, isSelected, onC }) => {
         }
     });
     dateDifference = dateDifference // Special cases where the message was only one unit ago and static ago->vor change
-        .replace(new RegExp(/\ba\b/), '1')
-        .replace(new RegExp(/\ban\b/), '1')
+        .replace(new RegExp(/\b(a)(n?)\b/), '1')
         .replace(new RegExp(/\bago\b/), 'vor');
 
     return (

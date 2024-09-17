@@ -5,8 +5,8 @@ const { chatInterface } = require('../database/chat');
 const socketManager = {
     allChats: null, // "/chat" namespace
     init: (_io) => {
-        _io.use(userMiddleware.authenticateSocket); // Always check socket.handshake for jsonwebtoken and its validity
         socketManager.allChats = _io.of('/chat');
+        socketManager.allChats.use(userMiddleware.authenticateSocket); // Always check socket.handshake for jsonwebtoken and its validity)
         socketManager.allChats.on('connection', socketManager.onConnection);
     },
     onConnection: (socket) => {
@@ -21,6 +21,10 @@ const socketManager = {
             callback(chatMessages); // send chat messages back to client
         });
 
+        socket.on('chat:leave', (chatId, username) => {
+            socket.leave(chatId);
+        });
+
         socket.on('chat:message', async (chatId, username, message, callback) => {
             // Callback for a new message by client
             const date = moment().format('YYYY-MM-DD HH:mm:ss');
@@ -33,7 +37,7 @@ const socketManager = {
             });
 
             if (messageId)
-                socketManager.allChats.to(chatId).emit('message:new', {
+                socketManager.allChats.in(chatId).emit('message:new', {
                     // Emit new message to all clients in the specified room
                     chatId,
                     messageId,

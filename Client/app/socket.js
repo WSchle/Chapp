@@ -12,11 +12,11 @@ export const socket = {
     set: (_socket) => {
         instance = _socket;
     },
-    init: (token, _onConnectError) => {
-        // Initiate SocketIO with the jsonwebtoken we got at login
+    init: (username, _onConnectError) => {
+        // Initiate SocketIO with our username
         socket.set(
             io('http://localhost:3030/chat', {
-                auth: { token }, // This will be send with every request
+                auth: { username }, // This will be used to add the jsonwebtoken to the socket cookies
             })
         );
 
