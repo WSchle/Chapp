@@ -29,7 +29,7 @@ const Login = () => {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ username: username, password: password }),
-            credentials: 'omit',
+            credentials: 'include',
         });
         const responsejson = await response.json();
         if (response.status != 200) {
@@ -38,7 +38,6 @@ const Login = () => {
             setErrorMessage(responsejson.message);
         } else {
             localStorage.setItem('username', username);
-            localStorage.setItem('jwtoken', responsejson.jwtoken);
             // setting local storage items to later send with the request to server
             router.push('/chats');
         }

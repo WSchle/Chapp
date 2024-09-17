@@ -6,6 +6,7 @@ const bodyparser = require('body-parser');
 const socketIO = require('socket.io')(http, {
     cors: {
         origin: 'http://localhost:3000',
+        credentials: true,
     },
 });
 require('dotenv').config();
@@ -14,7 +15,12 @@ const userRouter = require('./REST/routes/userRouter');
 const { socketManager } = require('./socket/socket');
 
 app.use(bodyparser.raw({ type: 'application/json' }));
-app.use(cors());
+app.use(
+    cors({
+        origin: 'http://localhost:3000',
+        credentials: true,
+    })
+);
 
 app.use('/api/user', userRouter);
 

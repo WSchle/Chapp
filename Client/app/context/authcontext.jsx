@@ -11,8 +11,8 @@ export const AuthProvider = ({ children }) => {
 
     const [isAuthed, setIsAuthed] = useState(false);
 
-    const isAuthenticated = (token, username) => {
-        if (token.length == 0 || username.length == 0) {
+    const isAuthenticated = (username) => {
+        if (username.length == 0) {
             return false;
         }
         return true;
@@ -20,14 +20,15 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         var user = localStorage.getItem('username') || '';
-        var jwtoken = localStorage.getItem('jwtoken') || '';
 
-        var authed = isAuthenticated(jwtoken, user);
-        // not really an authentication, just checking if we have the username and jsonwebtoken
+        var authed = isAuthenticated(user);
+        // not really an authentication, just checking if we have the username
         // real authentication will happen on the server
         setIsAuthed(authed);
 
-        if (!authed) router.push('/login');
+        if (!authed) {
+            router.push('/login');
+        }
     }, []);
 
     return (

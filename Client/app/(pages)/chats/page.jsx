@@ -13,6 +13,7 @@ const Chat = () => {
     const [chatList, setChatList] = useState([]);
     const [chatMessages, setChatMessages] = useState(['loading']); // We want to differentiate between loading(not set yet) or empty(no messages yet)
     const [selectedChat, setSelectedChat] = useState('');
+    const [prevSelectedChat, setPrevSelectedChat] = useState('');
     const [error, setError] = useState(false);
 
     const [messageFieldText, setMessageFieldText] = useState('');
@@ -26,8 +27,8 @@ const Chat = () => {
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
-                Authorization: 'BEARER ' + localStorage.getItem('jwtoken'),
             },
+            credentials: 'include',
         });
         const responsejson = await response.json();
 
@@ -70,7 +71,7 @@ const Chat = () => {
             }
         }
 
-        socket.init(localStorage.getItem('jwtoken'), onConnectError);
+        socket.init(localStorage.getItem('username'), onConnectError);
 
         socket.addListener('message:new', (data) => {
             // Handler for receiving new messages
@@ -95,13 +96,17 @@ const Chat = () => {
 
     useEffect(() => {
         // Called whenever we select another chat
-        if (selectedChat != '' && selectedChat != null)
+        if (selectedChat != '' && selectedChat != null) {
+            const username = localStorage.getItem('username');
+            if (prevSelectedChat != '') {
+                socket.get().emit('chat:leave', prevSelectedChat, username);
+            }
             // We dont want to emit when no chat is selected
-            socket
-                .get()
-                .emit('chat:join', selectedChat, localStorage.getItem('username'), (response) => {
-                    setChatMessages(response); // set local array of all chat messages within the specified(selectedChat) chat room
-                });
+            socket.get().emit('chat:join', selectedChat, username, (response) => {
+                setChatMessages(response); // set local array of all chat messages within the specified(selectedChat) chat room
+            });
+            setPrevSelectedChat(selectedChat);
+        }
     }, [selectedChat]);
 
     return (

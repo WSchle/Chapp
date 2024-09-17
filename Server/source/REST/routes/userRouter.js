@@ -61,9 +61,7 @@ userRouter.post('/login', userMiddleware.validateRequest, async (request, respon
         dataConn
             .query(
                 // Get password to check against
-                `SELECT password FROM users WHERE username = ${dataConn.escape(
-                    requestBody.username
-                )}`
+                `SELECT * FROM users WHERE username = ${dataConn.escape(requestBody.username)}`
             )
             .then(async (rows) => {
                 if (!rows.length) {
@@ -86,10 +84,27 @@ userRouter.post('/login', userMiddleware.validateRequest, async (request, respon
                             { expiresIn: '24h' } // After 24 hours the user has to login again
                         );
 
+                        response.cookie('token', jwtoken, {
+                            httpOnly: true,
+                            domain: 'localhost',
+                            secure: false,
+                            sameSite: 'lax',
+                            maxAge: 3600000 * 24,
+                        });
+
+                        const wasTokenAdded = await userInterface.updateToken(
+                            rows[0].username,
+                            jwtoken
+                        );
+                        if (wasTokenAdded) {
+                            console.log('Token added');
+                        } else {
+                            console.log('Token not added');
+                        }
+
                         dataConn.end();
                         return response.status(200).send({
                             message: 'Ok',
-                            jwtoken,
                         });
                     } else {
                         // Password incorrect
